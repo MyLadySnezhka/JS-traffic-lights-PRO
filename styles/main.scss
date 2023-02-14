@@ -34,7 +34,6 @@
     margin: 0 auto;
 }
 
-
 .red, .redp, .yellow, .green, .greenp, .black, .count {
     height: 100px;
     width: 100px;
@@ -70,6 +69,10 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+}
+
+.red {
+    background-color: red;
 }
 
 .yellow {

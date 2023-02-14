@@ -2,14 +2,15 @@ const redcar = document.querySelector('.lightcar > div[name=red]');
 const yellowcar = document.querySelector('.lightcar > div[name=yellow]');
 const greencar = document.querySelector('.lightcar > div[name=green]');
 //const count1 = document.querySelector('.light1 > .count');
-const redpeople = document.querySelector('.lightpeople > div[name=red]');
+const redpeople = document.querySelector('.lightpeople > div[name=redpeople]');
 //const yellow2 = document.querySelector('.light2 > div[name=yellow]');
-const greenpeople = document.querySelector('.lightpeople > div[name=green]');
+const greenpeople = document.querySelector('.lightpeople > div[name=greenpeople]');
 const countpeople = document.querySelector('.lightpeople > .count');
 
 // світлофор для автівок на 3 кольори
 
 const redc = (colordiv1, colordiv2, colordiv3) => {
+    colordiv1.classList.remove('black');
     colordiv1.classList.add('red');
     colordiv2.classList.remove('yellow');
     colordiv2.classList.add('black');
@@ -73,7 +74,7 @@ const greenp = (colordiv1, colordiv2, count) => {
 };
 
 const blinkGreenp = (colordiv2) => {
-    //colordiv2.classList.remove('green');
+    //colordiv2.classList.remove('greenp');
     colordiv2.classList.add('blinkGreen');
 };
 
@@ -116,6 +117,6 @@ const render = () => {
 
 render();
 
-// setInterval( () => {
-//     render();
-// }, delay+20000);
+setInterval( () => {
+    render();
+}, delay+20000);

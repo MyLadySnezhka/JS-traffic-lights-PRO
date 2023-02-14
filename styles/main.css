@@ -68,6 +68,10 @@
   background-size: contain;
 }
 
+.red {
+  background-color: red;
+}
+
 .yellow {
   background-color: yellow;
 }

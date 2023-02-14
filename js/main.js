@@ -6,6 +6,10 @@ const redpeople = document.querySelector('.lightpeople > div[name=redpeople]');
 //const yellow2 = document.querySelector('.light2 > div[name=yellow]');
 const greenpeople = document.querySelector('.lightpeople > div[name=greenpeople]');
 const countpeople = document.querySelector('.lightpeople > .count');
+const btnStart = document.querySelector('button[name=btnStart]');
+const btnStop = document.querySelector('button[name=btnStop]');
+const mainRoad = document.querySelector('.mainroad');
+const elCar = document.querySelector('.car');
 
 // світлофор для автівок на 3 кольори
 
@@ -16,6 +20,8 @@ const redc = (colordiv1, colordiv2, colordiv3) => {
     colordiv2.classList.add('black');
     colordiv3.classList.remove('green');
     colordiv3.classList.add('black');
+    elCar.classList.add('carstop');
+    elCar.classList.remove('carright');
 };
 
 const redyellowc = (colordiv1, colordiv2, colordiv3) => {
@@ -42,6 +48,9 @@ const greenc = (colordiv1, colordiv2, colordiv3) => {
     colordiv2.classList.add('black');
     colordiv3.classList.remove('black');
     colordiv3.classList.add('green');
+    elCar.classList.remove('carstop');
+    elCar.classList.add('carright');
+
 };
 
 const blackc = (colordiv3) => {
@@ -58,7 +67,7 @@ const blinkGreenc = (colordiv3) => {
 const redp = (colordiv1, colordiv2, count) => {
     colordiv1.classList.remove('black');
     colordiv1.classList.add('redp');
-    colordiv2.classList.remove('blinkGreenreen');
+    colordiv2.classList.remove('blinkGreen');
     colordiv2.classList.add('black');
     count.classList.remove('greentext');
     count.classList.add('redtext');
@@ -85,7 +94,7 @@ const blinkGreenp = (colordiv2) => {
 
 const delay = 5000;
 let id;
-const delayshag = delay + 11000;
+const delayshag = delay + 6000;
 
 const timer = (count, delayshag) => {
     delayshag = delayshag - 1000;
@@ -105,8 +114,8 @@ const render = () => {
     setTimeout(() => redc(redcar, yellowcar, greencar), delay);       
     setTimeout(() => redyellowc(redcar, yellowcar, greencar), delay+5000);
     setTimeout(() => greenc(redcar, yellowcar, greencar), delay+10000);
-    setTimeout(() => blinkGreenc(greencar), delay+15000);
-    setTimeout(() => yellowc(redcar, yellowcar, greencar), delay+20000);
+    //setTimeout(() => blinkGreenc(greencar), delay+15000);
+    //setTimeout(() => yellowc(redcar, yellowcar, greencar), delay+20000);
 
     setTimeout(() => greenp(redpeople, greenpeople, countpeople), delay);
     setTimeout(() => timer(countpeople, delayshag), delay);
@@ -115,8 +124,12 @@ const render = () => {
     setTimeout(() => timer(countpeople, delayshag), delay+10000);
 };
 
-render();
 
-setInterval( () => {
+btnStart.addEventListener('click', () => {
     render();
-}, delay+20000);
+
+    setInterval( () => {
+        render();
+    }, delay+10000);
+})
+

@@ -94,12 +94,12 @@ const blinkGreenp = (colordiv2) => {
 
 const delay = 5000;
 let id;
-const delayshag = delay + 6000;
+//const delayshag = delay + 6000;
 
-const timer = (count, delayshag) => {
+const timerGreen = (count, delayshag) => {
     delayshag = delayshag - 1000;
     if (delayshag>0) {
-            id = setTimeout(timer, 1000, count, delayshag);
+            id = setTimeout(timerGreen, 1000, count, delayshag);
             count.innerHTML = delayshag/1000;    
     } else {
         count.innerHTML = '--';  
@@ -108,20 +108,34 @@ const timer = (count, delayshag) => {
         return;
     }  
 };
-                        
+  
+const timerRed = (count, delayshag) => {
+    delayshag = delayshag - 1000;
+    if (delayshag>0) {
+            id = setTimeout(timerRed, 1000, count, delayshag);
+            count.innerHTML = delayshag/1000;    
+    } else {
+        count.innerHTML = '--';  
+        clearTimeout(id);
+        //console.log(delayshag);
+        return;
+    }  
+};
+
 const render = () => {
     
     setTimeout(() => redc(redcar, yellowcar, greencar), delay);       
     setTimeout(() => redyellowc(redcar, yellowcar, greencar), delay+5000);
     setTimeout(() => greenc(redcar, yellowcar, greencar), delay+10000);
     //setTimeout(() => blinkGreenc(greencar), delay+15000);
-    //setTimeout(() => yellowc(redcar, yellowcar, greencar), delay+20000);
+    setTimeout(() => yellowc(redcar, yellowcar, greencar), delay+15000);
 
     setTimeout(() => greenp(redpeople, greenpeople, countpeople), delay);
-    setTimeout(() => timer(countpeople, delayshag), delay);
+    setTimeout(() => timerGreen(countpeople, delay+6000), delay);
     setTimeout(() => blinkGreenp(greenpeople), delay+5000);
+    setTimeout(() => timerRed(countpeople, delay+11000), delay+11000);
     setTimeout(() => redp(redpeople, greenpeople, countpeople), delay+10000);
-    setTimeout(() => timer(countpeople, delayshag), delay+10000);
+    setTimeout(() => redp(redpeople, greenpeople, countpeople), delay+15000);  
 };
 
 
@@ -130,6 +144,6 @@ btnStart.addEventListener('click', () => {
 
     setInterval( () => {
         render();
-    }, delay+10000);
+    }, delay+15000);
 })
 

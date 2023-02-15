@@ -1,5 +1,5 @@
 .wrap {
-  max-width: 900px;
+  max-width: 100%;
   margin: 0 auto;
   text-align: center;
 }
@@ -23,15 +23,24 @@
 .road {
   background-color: gray;
   width: 110px;
+}
+
+.road, .peopleroad {
   height: 386px;
+}
+
+.mainroad, .peopleroad {
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 .mainroad {
   background-color: gray;
-  max-width: 900px;
-  width: 800px;
   height: 200px;
-  margin: 0 auto;
+}
+
+.peopleroad {
+  background-color: bisque;
 }
 
 .red, .redp, .yellow, .green, .greenp, .black, .count {
@@ -109,7 +118,6 @@
   background-image: url(../images/carright.png);
   height: 100px;
   width: 160px;
-  overflow: hidden;
   position: relative;
 }
 
@@ -124,10 +132,10 @@
 
 @keyframes cargo {
   0% {
-    left: 0px;
+    left: 5px;
   }
   100% {
-    left: 640px;
+    left: 100%;
   }
 }
 .btnContainer {

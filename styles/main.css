@@ -40,7 +40,7 @@
 }
 
 .peopleroad {
-  background-color: bisque;
+  background-image: url("../images/fon2-peopleroad.jpg");
 }
 
 .red, .redp, .yellow, .green, .greenp, .black, .count {
@@ -118,7 +118,6 @@
   background-image: url(../images/carright.png);
   height: 100px;
   width: 160px;
-  position: relative;
 }
 
 .carright {
@@ -136,6 +135,33 @@
   }
   100% {
     left: 100%;
+  }
+}
+.stopman {
+  background-image: url(../images/man-go.png);
+  height: 150px;
+  width: 88px;
+  left: 60%;
+  top: 5%;
+  position: absolute;
+}
+
+.walkman {
+  background-image: url(../images/man-go.png);
+  height: 150px;
+  width: 88px;
+  left: 60%;
+  overflow: hidden;
+  position: absolute;
+  animation: mango 20s;
+}
+
+@keyframes mango {
+  0% {
+    top: 5%;
+  }
+  100% {
+    top: 75%;
   }
 }
 .btnContainer {

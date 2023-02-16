@@ -10,6 +10,7 @@ const btnStart = document.querySelector('button[name=btnStart]');
 const btnStop = document.querySelector('button[name=btnStop]');
 const mainRoad = document.querySelector('.mainroad');
 const elCar = document.querySelector('.car');
+const elMan = document.querySelector('.man');
 
 // світлофор для автівок на 3 кольори
 
@@ -71,6 +72,8 @@ const redp = (colordiv1, colordiv2, count) => {
     colordiv2.classList.add('black');
     count.classList.remove('greentext');
     count.classList.add('redtext');
+    elMan.classList.remove('walkman');
+    elMan.classList.add('stopman');
 };
 
 const greenp = (colordiv1, colordiv2, count) => {
@@ -80,6 +83,8 @@ const greenp = (colordiv1, colordiv2, count) => {
     colordiv2.classList.add('greenp');
     count.classList.remove('redtext');
     count.classList.add('greentext');
+    elMan.classList.remove('stopman');
+    elMan.classList.add('walkman');
 };
 
 const blinkGreenp = (colordiv2) => {

@@ -36,6 +36,7 @@
 
 .mainroad {
   background-color: gray;
+  background-image: url(../images/mainroad.png);
   height: 200px;
 }
 
@@ -153,7 +154,7 @@
   left: 60%;
   overflow: hidden;
   position: absolute;
-  animation: mango 20s;
+  animation: mango 10s infinite;
 }
 
 @keyframes mango {
@@ -161,7 +162,7 @@
     top: 5%;
   }
   100% {
-    top: 75%;
+    top: 60%;
   }
 }
 .btnContainer {

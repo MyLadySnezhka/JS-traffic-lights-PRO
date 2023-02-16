@@ -21,9 +21,17 @@ const redc = (colordiv1, colordiv2, colordiv3) => {
     colordiv2.classList.add('black');
     colordiv3.classList.remove('green');
     colordiv3.classList.add('black');
+};
+
+const stopCar = () => {
     elCar.classList.add('carstop');
     elCar.classList.remove('carright');
 };
+
+const goCar = () => {
+    elCar.classList.remove('carstop');
+    elCar.classList.add('carright');
+}
 
 const redyellowc = (colordiv1, colordiv2, colordiv3) => {
     colordiv1.classList.add('red');
@@ -49,9 +57,6 @@ const greenc = (colordiv1, colordiv2, colordiv3) => {
     colordiv2.classList.add('black');
     colordiv3.classList.remove('black');
     colordiv3.classList.add('green');
-    elCar.classList.remove('carstop');
-    elCar.classList.add('carright');
-
 };
 
 const blackc = (colordiv3) => {
@@ -65,6 +70,16 @@ const blinkGreenc = (colordiv3) => {
 
 // світлофор для пішоходів
 
+const stopMan = () => {
+    elMan.classList.remove('walkman');
+    elMan.classList.add('stopman');
+};
+
+const walkMan = () => {
+    elMan.classList.remove('stopman');
+    elMan.classList.add('walkman');
+};
+
 const redp = (colordiv1, colordiv2, count) => {
     colordiv1.classList.remove('black');
     colordiv1.classList.add('redp');
@@ -72,8 +87,6 @@ const redp = (colordiv1, colordiv2, count) => {
     colordiv2.classList.add('black');
     count.classList.remove('greentext');
     count.classList.add('redtext');
-    elMan.classList.remove('walkman');
-    elMan.classList.add('stopman');
 };
 
 const greenp = (colordiv1, colordiv2, count) => {
@@ -83,8 +96,6 @@ const greenp = (colordiv1, colordiv2, count) => {
     colordiv2.classList.add('greenp');
     count.classList.remove('redtext');
     count.classList.add('greentext');
-    elMan.classList.remove('stopman');
-    elMan.classList.add('walkman');
 };
 
 const blinkGreenp = (colordiv2) => {
@@ -144,11 +155,78 @@ const render = () => {
 };
 
 
-btnStart.addEventListener('click', () => {
-    render();
+// btnStart.addEventListener('click', () => {
+//     render();
 
-    setInterval( () => {
-        render();
-    }, delay+15000);
+//     setInterval( () => {
+//         render();
+//     }, delay+15000);
+// })
+
+// машинам червоний, людям зелений
+const time10 = () => {
+    setTimeout(() => {
+        redc(redcar, yellowcar, greencar);
+        stopCar();
+        greenp(redpeople, greenpeople, countpeople);
+        walkMan();
+        timerGreen(countpeople, 15000);
+        time10();
+    }, 30000);
+}
+
+//машинам жовто-червоний, людям блимаючий зелений
+const time15 = () => {
+    setTimeout(() => {
+        redyellowc(redcar, yellowcar, greencar);
+        stopCar();
+        blinkGreenp(greenpeople);
+        walkMan();
+        //timerGreen(countpeople, delay+6000);
+        time15();
+    }, 35000);
+}
+
+//машинам зелений, людям червоний
+const time25 = () => {
+    setTimeout(() => {
+        greenc(redcar, yellowcar, greencar);
+        goCar();
+        redp(redpeople, greenpeople, countpeople);
+        timerRed(countpeople, 15000);
+        stopMan();
+        //mango.Stop();
+        time25();
+    }, 45000);
+}
+
+//машинам блимаючий зелений, людям червоний
+// const time30 = () => {
+//     setTimeout(() => {
+//         blinkGreenc(greencar);
+//         goCar();
+//         redp(redpeople, greenpeople, countpeople);
+//         stopMan();
+//         time30();
+//     }, 50000);
+// }
+
+//машинам жовтий, людям червоний
+const time35 = () => {
+    setTimeout(() => {
+        yellowc(redcar, yellowcar, greencar);
+        goCar();
+        redp(redpeople, greenpeople, countpeople);
+        //stopMan();
+        time35();
+    }, 50000);
+}
+
+btnStart.addEventListener('click', () => { 
+    render();
+    time10();
+    time15();
+    time25();
+    time35();
 })
 
